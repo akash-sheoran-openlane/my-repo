@@ -1,0 +1,14 @@
+trigger: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: |
+    organizationUrl=https://dev.azure.com/akash66sheoran
+    project=my-project
+    workItemId=1
+
+    PAT = jdfhkrhw
+
+    workItemResponse=$(curl -s -u PAT:$PAT "$organizationUrl/_apis/wit/workitems/$workItemId?api-version=7.1")
