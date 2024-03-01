@@ -16,3 +16,5 @@ steps:
     ls -lrt
 
     pwd
+
+    cat 1?api-version=7.2-preview.3
