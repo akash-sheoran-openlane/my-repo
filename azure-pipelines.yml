@@ -10,6 +10,6 @@ steps:
 
     PAT = u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba
 
-    workItemResponse=$(curl -s -u PAT:$PAT "$organizationUrl/_apis/wit/workitems/$workItemId?api-version=7.1")
+    workItemResponse=$(curl -s -u PAT:$PAT "$organizationUrl/_apis/wit/workitems/$workItemId?api-version=7.1" | jq .fields.System.Title -o output.txt)
     
     echo $workItemResponse
