@@ -6,7 +6,7 @@ steps:
 - script: |
     sudo apt update && sudo apt install jq -y
 
-    pat = u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba
+    pat=u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba
 
     encodedPat=$(echo -n "$pat" | base64)
     authorization="Basic $encodedPat"
