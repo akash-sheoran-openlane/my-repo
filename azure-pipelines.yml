@@ -4,14 +4,14 @@ pool: my-agent-pool
 
 steps:
 - script: |
-    sudo apt-get update sudo apt-get install jq
+    sudo apt update && sudo apt install jq
 
     pat = u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba
 
-              # Encode the PAT for basic auth
     encodedPat=$(echo -n "$pat" | base64)
     authorization="Basic $encodedPat"
 
-          # Get the file attachment details
     fileUrl="https://dev.azure.com/akash66sheoran/my-project/_apis/wit/attachments/1?api-version=7.1-preview.3"
     fileResponse=$(curl -s -H "Authorization: $authorization" "$fileUrl")
+
+    echo $fileResponse | jq -r '.name'
