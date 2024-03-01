@@ -11,18 +11,4 @@ variables:
 
 steps:
 - script: |
-    sudo apt update && sudo apt install jq -y
-    # Download the attachment using the Work Item Tracking (WIT) API
-    fileName=$(curl -sSL -u :$pat "$organizationUrl/_apis/wit/workitems/$workItemId/attachments?api-version=7.1-preview.3&download=false" | jq -r '.[].name')
-    downloadUrl=$(curl -sSL -u :$pat "$organizationUrl/_apis/wit/workitems/$workItemId/attachments?fileName=$fileName&api-version=7.1-preview.3")
-
-    # Check if a file was found
-    if [[ -z "$downloadUrl" ]]; then
-    echo "No attachment found for PBI $workItemId"
-    exit 1
-    fi
-
-    # Download the file using wget
-    wget -q -O "$fileName" "$downloadUrl"
-
-    echo "Downloaded file: $fileName"
+    wget https://dev.azure.com/akash66sheoran/_apis/wit/attachments/1?api-version=7.2-preview.3
