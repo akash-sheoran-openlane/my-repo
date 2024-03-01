@@ -12,4 +12,4 @@ steps:
 
     workItemResponse=$(curl -s -u PAT:$PAT "$organizationUrl/_apis/wit/workitems/$workItemId?api-version=7.1" | jq .fields.System.Title -o output.txt)
     
-    echo $workItemResponse
+    cat output.txt
