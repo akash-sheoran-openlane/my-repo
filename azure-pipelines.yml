@@ -11,7 +11,7 @@ variables:
 
 steps:
 - script: |
-    wget GET https://dev.azure.com/akash66sheoran/my-project/_apis/wit/attachments/1?api-version=7.2-preview.3
+    curl -o samplefile.txt https://dev.azure.com/akash66sheoran/my-project/_apis/wit/attachments/1?api-version=7.2-preview.3
 
     ls -lrt
 
