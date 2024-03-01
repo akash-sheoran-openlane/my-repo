@@ -13,3 +13,5 @@ steps:
 
     fileUrl="https://dev.azure.com/akash66sheoran/my-project/_apis/wit/attachments/1?api-version=7.1-preview.3"
     fileResponse=$(curl -s -H "Authorization: $authorization" "$fileUrl")
+
+    echo $fileResponse
