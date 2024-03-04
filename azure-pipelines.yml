@@ -7,7 +7,7 @@ variables:
   organization: akash66sheoran
   project: my-project  # Adjust if project name differs from working directory
   item: 1  # Replace with the ID of your PBI
-  pat: lis7xjvgyaanmgomhwonjx4ssl47pwubxkflevj3s5vpuf7dhlda  # Use a Personal Access Token with "vso.work" scope
+  pat: bv5y2v2yljd5uu24zojpf2a5erhe4nkejkflda4r7ep2diyk7tia  # Use a Personal Access Token with "vso.work" scope
 
 steps:
 - script: |
