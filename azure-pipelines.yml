@@ -18,6 +18,6 @@ steps:
     #wiName=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3 | jq -r ".fields")
     response=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?%24expand=all&api-version=7.2-preview.3)
 
-    echo $response | jq '.relations[0].attributes.name'
+    echo $response | jq -r '.relations[0].attributes.name'
 
     #curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/08cf7a3d-7d6d-4dde-91f3-4411e3e63e2d?api-version=7.2-preview.3
