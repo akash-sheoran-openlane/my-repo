@@ -22,7 +22,7 @@ steps:
     IFS='/'
     read -ra url_arr <<< "$attachmentURL"
 
-    echo "${url_arr[@]}"
+    echo "${url_arr[-1]}"
 
     #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID
 
