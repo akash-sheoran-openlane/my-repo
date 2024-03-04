@@ -14,7 +14,7 @@ steps:
 
     authHeaderValue=$(echo -n ":$(pat)" | base64)
 
-    response=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?%24expand=all&api-version=7.2-preview.3)
+    response=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?%24expand=all)
 
     fileName=$(echo $response | jq -r '.relations[0].attributes.name')
     attachmentURL=$(echo $response | jq -r '.relations[0].url')
@@ -23,7 +23,7 @@ steps:
     echo $attachmentURL
     echo $attachmentID
 
-    #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID?api-version=7.2-preview.3
+    #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID
 
     #ls -lrt
     
