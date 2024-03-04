@@ -3,10 +3,9 @@ trigger: none
 pool: my-agent-pool
 
 variables:
-  # Replace with values from your Azure DevOps project
   organization: akash66sheoran
-  project: my-project  # Adjust if project name differs from working directory
-  itemID: 1  # Replace with the ID of your PBI  # Use a Personal Access Token with "vso.work" scope
+  project: my-project
+  itemID: 2
 
 steps:
 - script: |
@@ -21,6 +20,7 @@ steps:
     attachmentURL=$(echo $response | jq -r '.relations[0].url')
     attachmentID=${url##*/}
 
+    echo $attachmentURL
     echo $attachmentID
 
     #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID?api-version=7.2-preview.3
