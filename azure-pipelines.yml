@@ -23,8 +23,8 @@ steps:
 
     echo $attachmentID
 
-    curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID?api-version=7.2-preview.3
+    #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID?api-version=7.2-preview.3
 
-    ls -lrt
+    #ls -lrt
     
-    cat $fileName
+    #cat $fileName
