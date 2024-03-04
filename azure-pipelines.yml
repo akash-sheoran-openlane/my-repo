@@ -10,4 +10,4 @@ variables:
 
 steps:
 - script: |
-    curl --header "Authorization: Basic $(pat)" https://dev.azure.com/$(organisation)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3
+    curl --header "Authorization: Basic $(pat)" https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3
