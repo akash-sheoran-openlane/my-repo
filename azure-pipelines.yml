@@ -16,7 +16,7 @@ steps:
     authHeaderValue=$(echo -n ":$(pat)" | base64)
 
     wiName=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3 | jq -r ".id")
-    attachment=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?$expand=All&api-version=7.2-preview.3 | jq -r ".relations[0].attributes.name")
+    attachment=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?$expand=all&api-version=7.2-preview.3 | jq -r ".relations[0].attributes.name")
 
     echo $wiName
     echo $attachment
