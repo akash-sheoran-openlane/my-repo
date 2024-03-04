@@ -11,4 +11,5 @@ variables:
 
 steps:
 - script: |
-    curl -H "Authorization: Basic $(echo -n ":u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba" | base64)" https://dev.azure.com/akash66sheoran/my-project/_apis/wit/workitems/1?api-version=7.2-preview.3
+    authHeaderValue=$(echo -n ":$(pat)" | base64)
+    curl -H "Authorization: Basic $authHeaderValue https://dev.azure.com/akash66sheoran/my-project/_apis/wit/workitems/1?api-version=7.2-preview.3
