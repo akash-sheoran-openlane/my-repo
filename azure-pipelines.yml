@@ -12,4 +12,4 @@ variables:
 steps:
 - script: |
     authHeaderValue=$(echo -n ":$(pat)" | base64)
-    curl -H "Authorization: Basic $authHeaderValue https://dev.azure.com/akash66sheoran/my-project/_apis/wit/workitems/1?api-version=7.2-preview.3
+    curl -H "Authorization: Basic $authHeaderValue" https://dev.azure.com/akash66sheoran/my-project/_apis/wit/workitems/1?api-version=7.2-preview.3
