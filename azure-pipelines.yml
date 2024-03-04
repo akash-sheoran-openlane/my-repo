@@ -6,8 +6,8 @@ variables:
   # Replace with values from your Azure DevOps project
   organization: akash66sheoran
   project: my-project  # Adjust if project name differs from working directory
-  item: 1  # Replace with the ID of your PBI  # Use a Personal Access Token with "vso.work" scope
+  itemID: 1  # Replace with the ID of your PBI  # Use a Personal Access Token with "vso.work" scope
 
 steps:
 - script: |
-    curl -u :$(pat) https://dev.azure.com/akash66sheoran/my-project/_apis/wit/workitems/1?api-version=7.2-preview.3
+    curl --header "Authorization: Basic $(pat)" https://dev.azure.com/$(organisation)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3
