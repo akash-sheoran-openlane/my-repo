@@ -18,10 +18,11 @@ steps:
 
     fileName=$(echo $response | jq -r '.relations[0].attributes.name')
     attachmentURL=$(echo $response | jq -r '.relations[0].url')
-    attachmentID=${url##*/}
+    
+    IFS='/'
+    read -ra url_arr <<< "$attachmentURL"
 
-    echo $attachmentURL
-    echo $attachmentID
+    echo "${url_arr[@]}"
 
     #curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID
 
