@@ -10,8 +10,11 @@ variables:
 
 steps:
 - script: |
+
+    sudo apt update && sudo apt install jq -y
+
     authHeaderValue=$(echo -n ":$(pat)" | base64)
 
-    #curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3
-    
-    curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/08cf7a3d-7d6d-4dde-91f3-4411e3e63e2d?api-version=7.2-preview.3
+    wiName=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?api-version=7.2-preview.3 | jq ".fields.System.Title")
+    echo $wiName
+    #curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/08cf7a3d-7d6d-4dde-91f3-4411e3e63e2d?api-version=7.2-preview.3
