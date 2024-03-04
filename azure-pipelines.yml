@@ -4,15 +4,15 @@ pool: my-agent-pool
 
 variables:
   # Replace with values from your Azure DevOps project
-  organizationUrl: https://dev.azure.com/akash66sheoran
+  organization: akash66sheoran
   project: my-project  # Adjust if project name differs from working directory
-  workItemId: 1  # Replace with the ID of your PBI
+  item: 1  # Replace with the ID of your PBI
   pat: u2wbgnvtl3fu5ox3c66i4gpfgvlaeds4xbibrlysmut44nsazrba  # Use a Personal Access Token with "vso.work" scope
 
 steps:
 - script: |
-    curl -u :$pat https://dev.azure.com/akash66sheoran/my-project/_apis/wit/attachments/1?api-version=7.2-preview.3
+    curl -o output.json https://dev.azure.com/{organization}/{project}/_apis/wit/workitems/{item}?api-version=7.2-preview.3
 
     ls -lrt
 
-    pwd
+    cat output.json
