@@ -19,6 +19,7 @@ parameters:
 
 steps:
 - task: Bash@3
+  condition: eq('${{ parameters.fileLocation }}', 'Attached to pbi')
   displayName: Get attachment
   inputs:
     targetType: 'inline'
@@ -47,7 +48,6 @@ steps:
 
 
 - task: Bash@3
-  condition: eq('${{ parameters.fileLocation }}', 'Attached to pbi')
   inputs:
     targetType: 'inline'
     script: 'echo $(fileName)'
