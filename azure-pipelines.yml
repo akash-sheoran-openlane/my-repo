@@ -8,24 +8,28 @@ variables:
   itemID: 2
 
 steps:
-- script: |
+- task: Bash@3
+  displayName: get attachment
+  inputs:
+    targetType: 'inline'
+    script: |
 
-    sudo apt update && sudo apt install jq -y
-
-    authHeaderValue=$(echo -n ":$(pat)" | base64)
-
-    response=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?%24expand=all)
-
-    fileName=$(echo $response | jq -r '.relations[0].attributes.name')
-    attachmentURL=$(echo $response | jq -r '.relations[0].url')
-    
-    IFS='/'
-    read -ra url_arr <<< "$attachmentURL"
-
-    attachmentID=$(echo "${url_arr[-1]}")
-
-    curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID
-
-    ls -lrt
-    
-    cat $fileName
+      sudo apt update && sudo apt install jq -y
+      
+      authHeaderValue=$(echo -n ":$(pat)" | base64)
+  
+      response=$(curl --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/workitems/$(itemID)?%24expand=all)
+  
+      fileName=$(echo $response | jq -r '.relations[0].attributes.name')
+      attachmentURL=$(echo $response | jq -r '.relations[0].url')
+      
+      IFS='/'
+      read -ra url_arr <<< "$attachmentURL"
+  
+      attachmentID=$(echo "${url_arr[-1]}")
+  
+      curl -o $fileName --header "Authorization: Basic $authHeaderValue" --location https://dev.azure.com/$(organization)/$(project)/_apis/wit/attachments/$attachmentID
+  
+      ls -lrt
+      
+      cat $fileName
