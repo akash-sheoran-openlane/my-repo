@@ -5,7 +5,11 @@ pool: my-agent-pool
 variables:
   organization: akash66sheoran
   project: my-project
-  itemID: 2
+
+parameters:
+  - name: itemID
+    displayName: ID of pbi
+    type: number
 
 steps:
 - task: Bash@3
