@@ -19,7 +19,6 @@ parameters:
 
 steps:
 - task: Bash@3
-  name: getAttachment
   displayName: Get attachment
   inputs:
     targetType: 'inline'
