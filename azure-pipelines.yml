@@ -14,8 +14,8 @@ parameters:
   - name: fileLocation
     displayName: Where is the file?
     values:
-      - attached to pbi
-      - ftp server
+      - Attached to pbi
+      - FTP server
 
 steps:
 - task: Bash@3
@@ -47,6 +47,7 @@ steps:
 
 
 - task: Bash@3
+  condition: eq('${{ parameters.fileLocation }}', 'Attached to pbi')
   inputs:
     targetType: 'inline'
     script: 'echo $(fileName)'
