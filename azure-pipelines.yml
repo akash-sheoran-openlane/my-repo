@@ -11,9 +11,15 @@ parameters:
     displayName: ID of pbi
     type: number
 
+  - name: fileLocation
+    displayName: Where is the file?
+    values:
+      - attached to pbi
+      - ftp server
+
 steps:
 - task: Bash@3
-  displayName: get attachment
+  displayName: Get attachment
   inputs:
     targetType: 'inline'
     script: |
