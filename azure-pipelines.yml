@@ -12,3 +12,6 @@ steps:
     inputs:
       targetType: 'inline'
       script: 'echo $(Build.BuildId)'
+  
+  - task: PostBuildCleanup@4
+    inputs:
